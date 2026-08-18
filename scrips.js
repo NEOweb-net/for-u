@@ -33,45 +33,37 @@ yesBtn.addEventListener("click", () => {
   waBtn.classList.remove("hidden");
 });
 
-function moveNoButton() {
+  function moveNoButton() {
   if (answered) return;
 
   noAttempts++;
 
   const wrapper = document.getElementById("wrapper");
-
-  if (!wrapper) return;
-
   const wrapperRect = wrapper.getBoundingClientRect();
-  const buttonRect = noBtn.getBoundingClientRect();
+
+  const buttonWidth = noBtn.offsetWidth;
+  const buttonHeight = noBtn.offsetHeight;
 
   const padding = 15;
 
-  const minX = wrapperRect.left + padding;
-  const minY = wrapperRect.top + padding;
+  const maxX =
+    wrapper.clientWidth - buttonWidth - padding;
 
-  const maxX = wrapperRect.right - buttonRect.width - padding;
-  const maxY = wrapperRect.bottom - buttonRect.height - padding;
+  const maxY =
+    wrapper.clientHeight - buttonHeight - padding;
 
   const randomX =
-    minX + Math.random() * Math.max(0, maxX - minX);
+    padding + Math.random() * Math.max(0, maxX - padding);
 
   const randomY =
-    minY + Math.random() * Math.max(0, maxY - minY);
+    padding + Math.random() * Math.max(0, maxY - padding);
 
-  noBtn.style.position = "fixed";
+  noBtn.style.position = "absolute";
   noBtn.style.left = `${randomX}px`;
   noBtn.style.top = `${randomY}px`;
-  noBtn.style.right = "auto";
-  noBtn.style.bottom = "auto";
-  noBtn.style.margin = "0";
-  noBtn.style.zIndex = "99999";
+  }
 
-  noBtn.style.transition =
-    "left 0.25s ease, top 0.25s ease";
-}
-
-  // Every multiple of 5 gets a new tease. The No button NEVER disappears here.
+// Every multiple of 5 gets a new tease. The No button NEVER disappears here.
   const noMessages = [
     "already?! 😭 Kamu masih berusaha? Just give up, I know you like me anyway! 💗",
     "BABEE?? 😭💀 Udah nyerah aja kamuu🫣.",
