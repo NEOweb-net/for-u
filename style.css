@@ -134,6 +134,15 @@ button {
   color: #e94d58;
 }
 
+#wrapper {
+  position: relative;
+  width: min(90%, 400px);
+  min-height: 500px;
+  padding: 25px;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
 .hidden {
   display: none;
 }
