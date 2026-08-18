@@ -30,6 +30,10 @@ body {
   max-width: 400px;
   width: 90%;
   transition: all 0.3s ease;
+
+  /* area untuk tombol No */
+  position: relative;
+  overflow: hidden;
 }
 
 .gif-container {
@@ -105,21 +109,22 @@ button {
   color: #e94d58;
   border: 2px solid #e94d58;
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
-  position: relative;
-  transition: left 0.15s ease, top 0.15s ease, transform 0.2s ease;
-}
 
-#no-btn {
   position: relative;
+
   z-index: 99999;
-  box-sizing: border-box;
-  max-width: calc(100vw - 32px);
-  touch-action: manipulation;
+  touch-action: none;
+
+  transition:
+    left 0.15s ease,
+    top 0.15s ease,
+    transform 0.2s ease;
 }
 
 #no-btn:active {
   transform: scale(0.95);
 }
+
 #love-message,
 #no-message {
   color: #9f3d50;
@@ -132,15 +137,6 @@ button {
 #no-message {
   font-weight: 700;
   color: #e94d58;
-}
-
-#wrapper {
-  position: relative;
-  width: min(90%, 400px);
-  min-height: 500px;
-  padding: 25px;
-  box-sizing: border-box;
-  overflow: hidden;
 }
 
 .hidden {
