@@ -33,41 +33,31 @@ yesBtn.addEventListener("click", () => {
   waBtn.classList.remove("hidden");
 });
 
-
 function moveNoButton() {
   if (answered) return;
 
   noAttempts++;
 
-  const padding = 16;
-  const rect = noBtn.getBoundingClientRect();
+  const wrapper = document.getElementById("wrapper");
 
-  const buttonWidth = rect.width || 130;
-  const buttonHeight = rect.height || 50;
+  if (!wrapper) return;
 
-  const screenWidth = window.innerWidth;
-  const screenHeight = window.innerHeight;
+  const wrapperRect = wrapper.getBoundingClientRect();
+  const buttonRect = noBtn.getBoundingClientRect();
 
-  // Batas maksimal posisi tombol
-  const maxX = Math.max(padding, screenWidth - buttonWidth - padding);
-  const maxY = Math.max(padding, screenHeight - buttonHeight - padding);
+  const padding = 15;
 
-  let randomX;
-  let randomY;
+  const minX = wrapperRect.left + padding;
+  const minY = wrapperRect.top + padding;
 
-  // Hindari posisi yang terlalu dekat dengan posisi sebelumnya
-  do {
-    randomX = Math.floor(
-      padding + Math.random() * Math.max(1, maxX - padding)
-    );
+  const maxX = wrapperRect.right - buttonRect.width - padding;
+  const maxY = wrapperRect.bottom - buttonRect.height - padding;
 
-    randomY = Math.floor(
-      padding + Math.random() * Math.max(1, maxY - padding)
-    );
-  } while (
-    Math.abs(randomX - (noBtn.offsetLeft || 0)) < 70 &&
-    Math.abs(randomY - (noBtn.offsetTop || 0)) < 70
-  );
+  const randomX =
+    minX + Math.random() * Math.max(0, maxX - minX);
+
+  const randomY =
+    minY + Math.random() * Math.max(0, maxY - minY);
 
   noBtn.style.position = "fixed";
   noBtn.style.left = `${randomX}px`;
@@ -77,17 +67,18 @@ function moveNoButton() {
   noBtn.style.margin = "0";
   noBtn.style.zIndex = "99999";
 
-  // Animasi kabur
-  noBtn.style.transition = "left 0.25s ease, top 0.25s ease";
+  noBtn.style.transition =
+    "left 0.25s ease, top 0.25s ease";
+}
 
   // Every multiple of 5 gets a new tease. The No button NEVER disappears here.
   const noMessages = [
-    "5x already?! 😭 Kamu masih berusaha? Just give up, I know you like me anyway! 💗",
-    "10x?! BROOO 😭💀 Udah nyerah aja kamuu🫣.",
-    "15x?! 😭 Serius masih mau kabur dari kenyataan? You like me, admit it! 😌💕",
-    "20x?! HAHAHA 😭 Kamu lucu banget kalau denial. Just press YES already! ❤️",
-    "25x?! 😭💗 Aku kasih tahu ya... Kamu ga bisa bohongin diri kamuu😛.",
-    "30x?! OKEEE 😭 Kamu benar-benar gigih. But I know you love me anyway. 🫵💕"
+    "already?! 😭 Kamu masih berusaha? Just give up, I know you like me anyway! 💗",
+    "BABEE?? 😭💀 Udah nyerah aja kamuu🫣.",
+    "😭 Serius masih mau kabur dari kenyataan? You like me, admit it! 😌💕",
+    "HAHAHA 😭 Kamu lucu banget kalau denial. Just press YES already! ❤️",
+    "😭💗 Aku kasih tahu ya... Kamu ga bisa bohongin diri kamuu😛.",
+    "OKEEE 😭 Kamu benar-benar gigih. But I know you love me anyway. 🫵💕"
   ];
 
   if (noAttempts % 5 === 0) {
