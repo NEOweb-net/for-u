@@ -39,23 +39,46 @@ function moveNoButton() {
 
   noAttempts++;
 
-  // Keep the button on-screen at all times.
-  const padding = 12;
+  const padding = 16;
   const rect = noBtn.getBoundingClientRect();
+
   const buttonWidth = rect.width || 130;
   const buttonHeight = rect.height || 50;
-  const maxX = Math.max(padding, window.innerWidth - buttonWidth - padding);
-  const maxY = Math.max(padding, window.innerHeight - buttonHeight - padding);
 
-  const randomX = Math.floor(padding + Math.random() * Math.max(1, maxX - padding));
-  const randomY = Math.floor(padding + Math.random() * Math.max(1, maxY - padding));
+  const screenWidth = window.innerWidth;
+  const screenHeight = window.innerHeight;
 
-  // fixed + high z-index prevents it from being hidden behind the card.
+  // Batas maksimal posisi tombol
+  const maxX = Math.max(padding, screenWidth - buttonWidth - padding);
+  const maxY = Math.max(padding, screenHeight - buttonHeight - padding);
+
+  let randomX;
+  let randomY;
+
+  // Hindari posisi yang terlalu dekat dengan posisi sebelumnya
+  do {
+    randomX = Math.floor(
+      padding + Math.random() * Math.max(1, maxX - padding)
+    );
+
+    randomY = Math.floor(
+      padding + Math.random() * Math.max(1, maxY - padding)
+    );
+  } while (
+    Math.abs(randomX - (noBtn.offsetLeft || 0)) < 70 &&
+    Math.abs(randomY - (noBtn.offsetTop || 0)) < 70
+  );
+
   noBtn.style.position = "fixed";
   noBtn.style.left = `${randomX}px`;
   noBtn.style.top = `${randomY}px`;
-  noBtn.style.zIndex = "99999";
+  noBtn.style.right = "auto";
+  noBtn.style.bottom = "auto";
   noBtn.style.margin = "0";
+  noBtn.style.zIndex = "99999";
+
+  // Animasi kabur
+  noBtn.style.transition = "left 0.25s ease, top 0.25s ease";
 
   // Every multiple of 5 gets a new tease. The No button NEVER disappears here.
   const noMessages = [
