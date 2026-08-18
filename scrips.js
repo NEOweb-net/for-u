@@ -27,7 +27,7 @@ yesBtn.addEventListener("click", () => {
 
   // WhatsApp button appears only after YES.
   // Ganti nomor di bawah dengan nomor WhatsApp kamu.
-  const waNumber = "6281234567890";
+  const waNumber = "6285150836288";
   const waText = encodeURIComponent("Hi baby, I finally said YES 🥹❤️");
   waBtn.href = `https://wa.me/${waNumber}?text=${waText}`;
   waBtn.classList.remove("hidden");
@@ -60,10 +60,10 @@ function moveNoButton() {
   // Every multiple of 5 gets a new tease. The No button NEVER disappears here.
   const noMessages = [
     "5x already?! 😭 Kamu masih berusaha? Just give up, I know you like me anyway! 💗",
-    "10x?! BROOO 😭💀 Kamu tahu sendiri ujungnya bakal pencet YES juga.",
+    "10x?! BROOO 😭💀 Udah nyerah aja kamuu🫣.",
     "15x?! 😭 Serius masih mau kabur dari kenyataan? You like me, admit it! 😌💕",
     "20x?! HAHAHA 😭 Kamu lucu banget kalau denial. Just press YES already! ❤️",
-    "25x?! 😭💗 Aku kasih tahu ya... tombol No ini nggak akan pernah menang.",
+    "25x?! 😭💗 Aku kasih tahu ya... Kamu ga bisa bohongin diri kamuu😛.",
     "30x?! OKEEE 😭 Kamu benar-benar gigih. But I know you love me anyway. 🫵💕"
   ];
 
