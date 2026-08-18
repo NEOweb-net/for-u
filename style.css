@@ -109,6 +109,14 @@ button {
   transition: left 0.15s ease, top 0.15s ease, transform 0.2s ease;
 }
 
+#no-btn {
+  position: relative;
+  z-index: 99999;
+  box-sizing: border-box;
+  max-width: calc(100vw - 32px);
+  touch-action: manipulation;
+}
+
 #no-btn:active {
   transform: scale(0.95);
 }
